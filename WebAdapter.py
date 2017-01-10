@@ -24,12 +24,12 @@ class MyRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         sock = self.path[sockoffset:sockoffset+1]
         actoffset = self.path.index("act") + 4
         act = self.path[actoffset:actoffset+1]
-        retMesg =doRequest(sock,act)
+        retMesg = doRequest(sock,act)
         print(retMesg)
         self.send_response(200)
         self.send_response(200)
         self.send_header("Content-type", "text/html")
-        self.send_header("Content-length", len(DUMMY_RESPONSE))
+        self.send_header("Content-length", len(retMesg))
         self.end_headers()
         self.wfile.write(retMesg)
 
